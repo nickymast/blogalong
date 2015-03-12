@@ -1,0 +1,1933 @@
+  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20150305161138)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150305161138"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBlogs (20150305161219)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "blog_text" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150305161219"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateComments (20150305161303)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment_text" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150305161303"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddUserToBlogs (20150305161514)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (29.0ms)[0m  [1mALTER TABLE "blogs" ADD "user_id" integer[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150305161514"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddUserIdAndBlogIdToComments (20150305161920)
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "comments" ADD "user_id" integer[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "comments" ADD "blog_id" integer
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150305161920"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/users" for ::1 at 2015-03-05 10:23:59 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 3282ms (Views: 3242.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:24:03 -0600
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:24:07 -0600
+Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (1.0ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  Rendered blogs/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 116ms (Views: 98.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:24:07 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:24:07 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:24:07 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:07 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:07 -0600
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:24:12 -0600
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (1.0ms)[0m  SELECT "comments".* FROM "comments"
+  Rendered comments/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 101ms (Views: 94.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:12 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:24:12 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:24:12 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:24:12 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:12 -0600
+
+
+Started GET "/users" for ::1 at 2015-03-05 10:24:46 -0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 143ms (Views: 141.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:24:46 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:46 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:24:46 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:24:46 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:46 -0600
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:24:52 -0600
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 97ms (Views: 96.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:24:52 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:24:52 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:24:52 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:24:52 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:24:52 -0600
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Abe Weissnat"], ["email", "ruthie.kuvalis@nicolas.name"], ["created_at", "2015-03-05 16:26:57.932891"], ["updated_at", "2015-03-05 16:26:57.932891"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dr. Claudine Schumm"], ["email", "abe.jerde@fadel.net"], ["created_at", "2015-03-05 16:26:57.948892"], ["updated_at", "2015-03-05 16:26:57.948892"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Travis McGlynn"], ["email", "laila_feest@haag.name"], ["created_at", "2015-03-05 16:26:57.959893"], ["updated_at", "2015-03-05 16:26:57.959893"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ova Donnelly"], ["email", "khalid.sanford@nienowkunze.net"], ["created_at", "2015-03-05 16:26:57.969893"], ["updated_at", "2015-03-05 16:26:57.969893"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Mr. Deron Quigley"], ["email", "tierra_oreilly@parisian.biz"], ["created_at", "2015-03-05 16:26:57.980894"], ["updated_at", "2015-03-05 16:26:57.980894"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Karelle Toy"], ["email", "edwin_wunsch@ritchie.net"], ["created_at", "2015-03-05 16:26:57.990894"], ["updated_at", "2015-03-05 16:26:57.990894"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Reynold Purdy"], ["email", "franz_bogan@damorefarrell.biz"], ["created_at", "2015-03-05 16:26:58.002895"], ["updated_at", "2015-03-05 16:26:58.002895"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Gerry Collier"], ["email", "ahmad@schumm.info"], ["created_at", "2015-03-05 16:26:58.010896"], ["updated_at", "2015-03-05 16:26:58.010896"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Mrs. Mike Hansen"], ["email", "delmer.jones@eichmann.org"], ["created_at", "2015-03-05 16:26:58.018896"], ["updated_at", "2015-03-05 16:26:58.018896"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Laurence Roob"], ["email", "brenna.hartmann@lakin.com"], ["created_at", "2015-03-05 16:26:58.027896"], ["updated_at", "2015-03-05 16:26:58.027896"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Ad Reiciendis Eum Sit."], ["blog_text", "Illo modi reiciendis et. Ut provident itaque qui reiciendis quis et. Voluptatem cupiditate excepturi dicta consequatur a sit facilis. Quos et provident omnis quo voluptates consequatur. Omnis soluta vitae magni ut iusto est. Quidem quos numquam sunt delectus voluptatem voluptates vitae. Ea doloremque rerum voluptate excepturi doloribus optio quo. Repellendus velit nisi enim illo rem tenetur. Minima consequatur est vel corrupti necessitatibus qui quia. Voluptas sint necessitatibus sapiente sunt debitis maxime labore. Eum ducimus distinctio sunt laborum dolorum rerum reiciendis. Vel odio qui."], ["created_at", "2015-03-05 16:32:10.539771"], ["updated_at", "2015-03-05 16:32:10.539771"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Nesciunt Reiciendis Deserunt Aut."], ["blog_text", "Ipsa veniam voluptate velit minus laborum delectus aut. Quidem consequuntur a. Magnam in quia numquam odit vero consequuntur qui. Quasi modi earum consequatur. Quisquam eum voluptates voluptatem odio. Eum quisquam eos repudiandae ipsum beatae eveniet rem. Laborum a rerum aperiam neque perferendis. Illo et veritatis beatae sit ut dolor impedit. Non et non recusandae aut libero. Qui rerum qui vel dicta."], ["created_at", "2015-03-05 16:32:10.557772"], ["updated_at", "2015-03-05 16:32:10.557772"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Unde Est Earum Molestiae Error."], ["blog_text", "Et quibusdam unde aut dolor vel et. Fugiat eius iure ut. Facilis repudiandae et recusandae quaerat et ea. Nam quam magnam quidem. Numquam libero assumenda. Sequi beatae porro officiis totam aut. Animi explicabo ipsam. Aut qui est accusantium repellat eius. Consequatur accusantium sapiente. Aperiam reiciendis cumque id est excepturi. Cupiditate et consequatur repellendus enim at facilis odit."], ["created_at", "2015-03-05 16:32:10.567773"], ["updated_at", "2015-03-05 16:32:10.567773"]]
+  [1m[35m (20.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Assumenda Velit Molestias Dolor Odit Dignissimos Natus Necessitatibus."], ["blog_text", "Id voluptas ea temporibus. Iusto unde tenetur placeat vel doloribus quaerat. Dolore aut sed. Libero a sit. Hic dolores ut distinctio nesciunt vitae inventore voluptatibus. Velit illum commodi eos id dolore optio architecto. Qui aperiam officiis. Animi molestiae sit possimus saepe. Illum ut laudantium fuga. In alias iusto. Ut aut non cum. Aperiam iusto maxime culpa quaerat."], ["created_at", "2015-03-05 16:32:10.593774"], ["updated_at", "2015-03-05 16:32:10.593774"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Esse Dolorem Est Labore Tempora Provident Omnis Beatae."], ["blog_text", "Consequatur quibusdam accusamus consequuntur et reprehenderit. Illo error doloremque sapiente omnis nihil qui deserunt. Voluptas sit dicta. Animi vel aut quas aperiam pariatur occaecati quo. Deserunt neque vel voluptas exercitationem quia. Totam corporis consequatur officiis quis sint. Iusto doloribus magni laborum officiis qui enim. Et temporibus quisquam ipsa dolorem. Quasi aperiam dolore necessitatibus. Consequatur ut consectetur et. Dolores aut eveniet eos autem eligendi sit. Nam consequatur laborum."], ["created_at", "2015-03-05 16:32:10.604775"], ["updated_at", "2015-03-05 16:32:10.604775"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Qui Inventore Debitis Accusamus Dolore Assumenda Consequatur Tenetur."], ["blog_text", "Eos vitae quo omnis. Magnam ex enim consequuntur explicabo. Dolor esse facere aut provident adipisci ipsa. Iusto explicabo quos debitis magnam omnis quo. Et laborum minus ipsum magni et porro dignissimos. Sed ut qui in ut vero voluptas deleniti. Nemo dolorum aliquid. Aut quisquam ipsam. Dicta officiis consequatur qui recusandae enim est. Atque molestias debitis velit est voluptas. Omnis optio reiciendis."], ["created_at", "2015-03-05 16:32:10.615775"], ["updated_at", "2015-03-05 16:32:10.615775"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dicta Quos Non Quisquam Nemo Et Rem Reprehenderit."], ["blog_text", "Ut beatae et et magnam. Sit temporibus expedita. Officiis libero sit. Repudiandae aliquam illum architecto. Vitae quibusdam vel exercitationem doloremque esse in. Aperiam quisquam dolorem hic eos. Quia minus sed ut autem iste. Pariatur quis ut rerum quos. Culpa eligendi ullam. Voluptatem iusto est et eos."], ["created_at", "2015-03-05 16:32:10.624776"], ["updated_at", "2015-03-05 16:32:10.624776"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Et Sed Cupiditate Itaque Expedita."], ["blog_text", "Est sed laborum voluptatum. Voluptates est et temporibus praesentium et. Voluptas pariatur dolore expedita quia vitae voluptatem. Et quia similique sed. Qui sint dolor sed repudiandae atque eum eius. Adipisci pariatur odio. Illo voluptates officiis aspernatur odio sunt ea veniam. Dolores vel perspiciatis sunt tempore blanditiis. Et pariatur dolor in tenetur harum voluptas. Reprehenderit rem facere sit."], ["created_at", "2015-03-05 16:32:10.634777"], ["updated_at", "2015-03-05 16:32:10.634777"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Et Rerum Quis Laboriosam Est."], ["blog_text", "Sit enim quidem fugiat dignissimos non ea. Unde quisquam aut delectus quis totam inventore. Et veniam quos sit. Totam laboriosam et. Est tenetur ipsam quidem voluptates. Sit voluptatibus asperiores qui. Occaecati saepe quidem. Cupiditate blanditiis qui. Earum at aut ea aperiam ea. Magni quasi sint."], ["created_at", "2015-03-05 16:32:10.643777"], ["updated_at", "2015-03-05 16:32:10.643777"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Dicta Dignissimos Ut Odit Tempore Voluptas."], ["blog_text", "Aut placeat tempora voluptas nihil corrupti cum. Aspernatur eveniet ratione hic. Id voluptas omnis porro qui voluptatibus. Sunt eum illum harum. Qui debitis voluptatem quisquam aperiam. Maiores molestias consequatur. Quae deleniti at non fugit necessitatibus. Est quas eum deleniti sit. Occaecati aspernatur nobis hic accusantium corporis deserunt. Sint eligendi inventore eveniet. Qui et quod rerum non qui numquam. Quae voluptatem quidem quam modi excepturi id."], ["created_at", "2015-03-05 16:32:10.654778"], ["updated_at", "2015-03-05 16:32:10.654778"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Autem Reprehenderit Repudiandae Est Consectetur Dolorem Nesciunt."], ["blog_text", "Eos quos aut delectus sed excepturi quia. Ut et quidem veritatis ducimus voluptas. Aut porro ad. Quibusdam ab molestiae repellendus velit occaecati error. Enim minus officia tenetur vero modi. Fugit nihil praesentium at nobis. Voluptatem quis corporis. Eos aliquid eligendi qui. Error nam distinctio fugiat. Officiis corporis iure qui tempora sint et. Sit doloribus incidunt occaecati. Ad illo quod."], ["created_at", "2015-03-05 16:32:10.666778"], ["updated_at", "2015-03-05 16:32:10.666778"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Excepturi Voluptatem Assumenda Est."], ["blog_text", "Sed quibusdam ipsa tempora veritatis magni. Voluptates ipsam officia. Rerum quaerat mollitia et nihil. Tenetur officiis veniam corporis natus quos et. Sed quasi dolores sit. Libero quisquam exercitationem quo voluptate amet. Quis reiciendis laudantium voluptates sed aliquam nulla. Qui molestiae odit eveniet. Omnis laudantium consequatur at quibusdam error. Necessitatibus doloribus iste earum corporis."], ["created_at", "2015-03-05 16:32:10.678779"], ["updated_at", "2015-03-05 16:32:10.678779"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Totam Voluptatum Dicta Ut Sint."], ["blog_text", "Ipsa doloribus voluptas eveniet minus. Repudiandae sunt qui voluptatem. Ex aut ipsam iste voluptates molestiae. Tenetur in fugiat. Vitae expedita dolorem rerum eligendi eaque earum. Nihil est quis sunt. Facilis sed sapiente. Nihil et reiciendis quaerat saepe. Voluptatum numquam ipsam et. Hic nemo provident culpa corrupti dolorem rerum. Est molestiae sed officia incidunt. Eaque impedit vero qui quibusdam."], ["created_at", "2015-03-05 16:32:10.688780"], ["updated_at", "2015-03-05 16:32:10.688780"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Dolores Et Aut Voluptas Est Cumque Sit Non Neque."], ["blog_text", "Explicabo ea dolore et. Consequuntur explicabo et. Corporis eveniet officia aut atque. Qui earum sunt quae ab molestiae accusantium. Ipsa molestiae reiciendis. Et voluptatem corporis rerum odit possimus fugiat. Minima nihil ipsum aliquam assumenda. Repudiandae nihil veritatis quam quia mollitia. Vel a voluptatem aut iure velit deleniti. Perferendis eos voluptas ea aperiam."], ["created_at", "2015-03-05 16:32:10.698780"], ["updated_at", "2015-03-05 16:32:10.698780"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Amet Harum Cum Eos."], ["blog_text", "Fugiat maxime temporibus autem quidem. Iusto officia eos. Illo reiciendis atque placeat nostrum et. Ea ut earum sit rerum perspiciatis voluptas. Ipsa tempora qui. Veniam sit ullam dolore dicta ipsam asperiores. Sit repellendus rerum velit. Possimus in dolorem aperiam. Ea est nisi beatae cumque qui repellat quaerat. Doloribus non est. Sapiente incidunt occaecati quo sequi et facere."], ["created_at", "2015-03-05 16:32:10.706781"], ["updated_at", "2015-03-05 16:32:10.706781"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Expedita Incidunt Ex Error Voluptas."], ["blog_text", "Maiores itaque fugiat numquam magni omnis esse. Natus quia ea. Dolores tempore commodi et. Dicta qui ut aliquid in. Repellat voluptates impedit consequatur est dolores debitis labore. Amet in harum aperiam provident veritatis omnis. A accusamus ex aperiam odit temporibus inventore. Odit sit porro. Rerum facilis qui dolore. Enim facilis placeat dolores. Ducimus rerum sed aut quis explicabo ipsum ipsa."], ["created_at", "2015-03-05 16:32:10.716781"], ["updated_at", "2015-03-05 16:32:10.716781"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Ut Quis Rerum Voluptate."], ["blog_text", "Nihil aut similique consequatur exercitationem assumenda dolor sapiente. Id aliquid at et ut ipsum molestias quod. Magni aliquam vel. Impedit et fuga. Amet aut sint fugit libero labore quam eveniet. Dolorem accusamus fugit distinctio. Esse maxime autem culpa. Voluptatum quis dicta. Sit sint eligendi nesciunt corrupti facere. Sit laborum pariatur temporibus esse. Consequatur quas aperiam aliquam earum eius aut est. Ab harum est."], ["created_at", "2015-03-05 16:32:10.726782"], ["updated_at", "2015-03-05 16:32:10.726782"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Neque Dolorum Quo Nesciunt Ea Quas Et Pariatur Eaque."], ["blog_text", "Quia id aut facere nulla. Quaerat quisquam deleniti dignissimos. Nostrum sed est placeat ad. Sed doloribus quis architecto. Iste reprehenderit enim inventore. Non natus libero accusantium dignissimos nemo dolor suscipit. Voluptas est nisi. Nam nihil sed repellat nesciunt assumenda qui reprehenderit. Sapiente necessitatibus velit eos cupiditate earum qui. Est minus aperiam tenetur in unde impedit."], ["created_at", "2015-03-05 16:32:10.737782"], ["updated_at", "2015-03-05 16:32:10.737782"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Ut Ducimus Enim Voluptatem Architecto Id Blanditiis Error."], ["blog_text", "Eius nulla perspiciatis ullam est natus quod. Totam voluptas et neque consequuntur atque nihil consequatur. Molestias consequuntur voluptatem. Qui neque tenetur ullam aut. In et laudantium sit est ipsa consequatur. Dolor maxime voluptate. Aliquam voluptas natus dolor et necessitatibus. Illum doloribus a. Minima quia libero. Cum nesciunt quas vel voluptatum accusamus sit enim. Quia deleniti eveniet."], ["created_at", "2015-03-05 16:32:10.748783"], ["updated_at", "2015-03-05 16:32:10.748783"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Enim Doloribus Totam Rerum Aut Vel Consequatur."], ["blog_text", "Dolores a amet eos voluptates illo quis. Maxime sit laborum. Magni laborum corrupti est et quo. Quis facilis fuga nihil itaque et deserunt. Quos eos ea animi laudantium tempora autem aspernatur. Natus laboriosam non ea adipisci ullam velit dolorem. Tempora et quam incidunt corrupti corporis autem. Quisquam hic unde. Non velit rerum placeat eos eaque esse. Voluptatem voluptatem est quidem harum possimus. Ut explicabo aut illo quas ipsam. Occaecati adipisci dolore eveniet."], ["created_at", "2015-03-05 16:32:10.758784"], ["updated_at", "2015-03-05 16:32:10.758784"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Exercitationem Hic Ipsa Iusto Ut Qui Asperiores."], ["blog_text", "Blanditiis expedita voluptate corporis error dolore et non. Magnam dolorem nisi. Pariatur possimus voluptatibus ipsa nam. Beatae natus officiis. Voluptatem exercitationem praesentium impedit modi magni distinctio. Aut sit quia asperiores et molestiae repudiandae. Nemo aut et sit deleniti soluta dolorum. Totam eveniet quibusdam eligendi minus. Autem et cum quos recusandae nesciunt molestias. Sed qui aut expedita non iure. Consequatur ipsa in voluptates rerum dolorum molestias molestiae. Rem veniam ullam."], ["created_at", "2015-03-05 16:32:10.770784"], ["updated_at", "2015-03-05 16:32:10.770784"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Itaque Quod Quo In Aliquid At."], ["blog_text", "Voluptas omnis officia provident accusamus officiis. Aut enim debitis ipsum. Aspernatur iure sed cupiditate perspiciatis est nihil. Est vel et cupiditate amet. Assumenda aut possimus. Soluta explicabo sed alias minima expedita ut. Voluptatem enim doloribus omnis. Delectus doloribus dolor atque omnis laborum. Cumque hic atque accusantium quis impedit fugit expedita. Quibusdam sit itaque quod repellendus pariatur aliquam."], ["created_at", "2015-03-05 16:32:10.781785"], ["updated_at", "2015-03-05 16:32:10.781785"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Illum Officia Aliquam Ducimus Et Sed Perferendis Reprehenderit Aut."], ["blog_text", "Eaque quia tenetur iste reiciendis. Placeat eius cum ea fugiat inventore. Sed quo totam consequatur rerum dolorem quaerat magnam. Neque atque autem. Ullam odio perferendis enim est ipsam consectetur non. Laborum at et delectus velit voluptatem. Illo omnis iste unde. Suscipit dolore et recusandae. Quod ullam laboriosam ab vel. Nam itaque aut sit aut repudiandae aut."], ["created_at", "2015-03-05 16:32:10.792786"], ["updated_at", "2015-03-05 16:32:10.792786"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Perspiciatis Rem Nemo Consectetur Fuga Vero Fugiat."], ["blog_text", "Non et quidem fugiat. Perspiciatis ea minus placeat. Qui deserunt dignissimos enim a. Necessitatibus aut et est enim quis. Quos recusandae ratione beatae qui. Ut magnam aut facilis. Impedit occaecati a. Et quo aut praesentium. Aut ut qui illum aut. Sit ullam exercitationem tempora. Eius quas maiores quo nesciunt quia et quae. Omnis tenetur veniam."], ["created_at", "2015-03-05 16:32:10.801786"], ["updated_at", "2015-03-05 16:32:10.801786"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Ut Voluptatem Sit Molestias."], ["blog_text", "Perferendis rem eius qui. Rem est tempora cumque. Nulla quam maxime sed enim veritatis harum. Et officia dolorem maiores doloremque. Aliquid eum officia eligendi. Aliquam in nesciunt eaque aut. Facere facilis beatae rerum est pariatur fuga ipsa. Eos ducimus harum veniam. Aut qui molestias. Nemo mollitia perspiciatis ut id."], ["created_at", "2015-03-05 16:32:10.812787"], ["updated_at", "2015-03-05 16:32:10.812787"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Et Nulla Consequatur Sit Error Ut."], ["blog_text", "Molestiae non labore voluptates maiores. Iste ipsum dolores blanditiis omnis corporis dolor et. Tempore velit totam ea. Ex facilis alias deserunt quis dicta. Dolore veritatis sed natus eligendi qui vel quam. Minus non amet enim. Praesentium et autem et minima consectetur enim. Mollitia nulla magnam voluptatem dicta labore voluptas quas. Deserunt consequuntur illum occaecati dignissimos molestiae perspiciatis. Quia odio dolorem ea."], ["created_at", "2015-03-05 16:32:10.820787"], ["updated_at", "2015-03-05 16:32:10.820787"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Rem Quibusdam Totam Ut Dignissimos."], ["blog_text", "Ipsa est accusantium sit sequi autem error sed. Alias asperiores numquam repellat. In doloremque quaerat id voluptatem est sed architecto. Rerum cupiditate architecto molestiae est. Provident quod tenetur saepe rerum. Corporis sed sit eum. Maxime sed molestiae quasi qui. Labore ipsum accusamus dolor est. Dolorem eos ut eius occaecati consectetur explicabo. Harum et nobis at est. Perferendis harum dolore reiciendis id ut dolores nisi. Exercitationem aut nostrum."], ["created_at", "2015-03-05 16:32:10.831788"], ["updated_at", "2015-03-05 16:32:10.831788"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Velit Aut Qui Et."], ["blog_text", "Et alias ut cum libero. Officia occaecati mollitia quibusdam consectetur optio. Totam odit adipisci consequatur eos. Iste est ut porro deleniti. Aliquam provident et temporibus modi et. Sint nisi est ipsum aliquid quo maiores debitis. Est velit veritatis voluptas quasi reprehenderit. Animi voluptatem rerum maxime voluptatum reiciendis consequatur esse. Amet qui asperiores et blanditiis ratione odit. Consequatur assumenda veritatis in blanditiis officiis. Eaque perspiciatis consequuntur rerum voluptas sed assumenda. Eligendi consequatur molestiae non autem quo aspernatur itaque."], ["created_at", "2015-03-05 16:32:10.840788"], ["updated_at", "2015-03-05 16:32:10.840788"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Voluptatem Ex Laborum Sequi."], ["blog_text", "Voluptatem velit dolore laudantium rerum. Fuga id nemo placeat ducimus. Eaque neque nulla rem. Nihil sed et doloremque tempore itaque temporibus est. Magni voluptate nihil maiores omnis est. Voluptatem voluptas illo magnam incidunt suscipit molestiae. Et qui sint doloribus velit. Dicta adipisci nihil molestiae laborum. Quia odio quaerat explicabo aut officiis. Ea sit quidem."], ["created_at", "2015-03-05 16:32:10.851789"], ["updated_at", "2015-03-05 16:32:10.851789"]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Magnam Neque Reiciendis Accusantium Sint Est Non."], ["blog_text", "Vel magnam laudantium mollitia a. Odio nesciunt aperiam iure ullam consectetur et. Voluptas ab eligendi quam aut. Esse enim sed. Error vitae soluta praesentium perspiciatis. Quod numquam eos doloremque facilis fugit. Deserunt atque consequuntur. Sed labore harum. Qui eligendi sint mollitia omnis. Quibusdam veniam autem voluptatem id vero distinctio. Molestiae quia porro est."], ["created_at", "2015-03-05 16:32:10.860790"], ["updated_at", "2015-03-05 16:32:10.860790"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Sint Et Et Iste."], ["blog_text", "Architecto non et labore ipsam rerum ratione. Sed at quidem omnis laboriosam. Aut quidem qui eligendi et consequatur quis aut. Dolorem id voluptatum doloremque sed vero ut reprehenderit. Sed omnis totam aut maxime. Culpa dolorem neque nemo dignissimos. Laborum natus quas provident laudantium. Et natus quia ut. Est dolorem commodi eum reprehenderit. Tempora et consequuntur rerum dolores minima."], ["created_at", "2015-03-05 16:32:10.868790"], ["updated_at", "2015-03-05 16:32:10.868790"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Nihil Sequi Doloremque Magnam Amet Dolores Qui Nobis."], ["blog_text", "Ea in laborum ratione et excepturi repudiandae. Et sequi voluptatibus repellat. Labore dolorum provident voluptatibus est occaecati sunt. Qui perferendis ut non quo sint architecto. Blanditiis odio et quibusdam soluta quos voluptatibus omnis. Amet maxime tenetur consequatur. Autem velit sit distinctio. Non sint qui rerum voluptatum iste. Odit iusto nesciunt quia consequatur commodi voluptatem. Exercitationem minus sequi ad vero. Repellat et est ex. Doloremque rerum tempora hic."], ["created_at", "2015-03-05 16:32:10.880791"], ["updated_at", "2015-03-05 16:32:10.880791"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "In Veritatis Sit Est Culpa Praesentium Officia Velit Molestiae."], ["blog_text", "Blanditiis aut architecto ipsa enim sunt qui velit. Unde et rerum et est natus laudantium et. Hic animi et ipsum fugit cum natus. Animi dolores vel et. Sed nostrum tempora qui ea excepturi dolores ipsa. Sint non aperiam cupiditate. Adipisci dignissimos accusantium cum quidem odit necessitatibus voluptas. Voluptatibus enim est sit. Unde est et. Repudiandae eum modi."], ["created_at", "2015-03-05 16:32:10.889791"], ["updated_at", "2015-03-05 16:32:10.889791"]]
+  [1m[35m (10.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Et Rerum Quisquam Eveniet."], ["blog_text", "Voluptatum consequatur debitis. Non et vitae exercitationem beatae aut. Odit ad in tempora voluptas placeat dolores voluptate. Pariatur quae officia qui. Sint commodi ut velit nam. Sequi ut aut rerum ut temporibus. Est fuga iure eius ut voluptate similique dolor. Doloribus inventore ut et optio et aut. Ratione porro incidunt voluptatem nostrum ut harum. Velit aspernatur sint. Est et voluptas magni nisi consectetur quaerat omnis. Rem ullam praesentium sit explicabo sit odio."], ["created_at", "2015-03-05 16:32:10.904792"], ["updated_at", "2015-03-05 16:32:10.904792"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Repellendus Ullam Enim Ut Doloremque Dicta Quia Ex Qui."], ["blog_text", "Assumenda atque velit minus similique numquam perspiciatis temporibus. Iusto rerum aut. Et aut reiciendis. Iusto sapiente quas. Reprehenderit molestiae odit. Quia eligendi cupiditate. Id ipsa magnam totam debitis ducimus qui. Fugit rerum eligendi eos corrupti. Ab perferendis asperiores. Nihil illum ipsam culpa est. Odio laboriosam qui enim. Soluta deserunt vel nihil placeat et velit."], ["created_at", "2015-03-05 16:32:10.915793"], ["updated_at", "2015-03-05 16:32:10.915793"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Quasi Explicabo Aut Dolores Voluptatem Eos."], ["blog_text", "Deleniti aut quas itaque et aut magnam. Voluptas error voluptates saepe necessitatibus. Possimus aliquam alias laborum in et qui. Officia itaque impedit deleniti. Dolore sed maxime sunt natus. Ut dolorum aut beatae quia est nisi ipsum. Omnis est autem voluptatem delectus. Iste et nihil in. Maxime impedit nesciunt ea quas voluptatum. Nobis fugiat sapiente et neque itaque. Rem accusantium ut. Esse porro rerum repellat perspiciatis."], ["created_at", "2015-03-05 16:32:10.929793"], ["updated_at", "2015-03-05 16:32:10.929793"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Fugiat Asperiores Aut Non Non Laudantium."], ["blog_text", "Nemo molestiae nihil. Molestiae blanditiis similique inventore perferendis quo dicta quo. Quam consequatur quo nulla dolorem. At est sint odit voluptas aperiam beatae nulla. Explicabo repellendus dolorem. Rerum harum dolores ut cumque nostrum aut. Quo et vero et quisquam minima. Dolor sint hic voluptate ut voluptatem repudiandae. Sunt corporis autem quos. Non eveniet quia in ducimus incidunt quas. Natus nihil maxime exercitationem illo ipsam quisquam architecto."], ["created_at", "2015-03-05 16:32:10.938794"], ["updated_at", "2015-03-05 16:32:10.938794"]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Ex Dolorem Et Illo Qui Doloremque Modi Id."], ["blog_text", "Aut iure aperiam quia magni fuga. Molestiae nihil rerum voluptas eum voluptatem sequi temporibus. Iure maxime a vel nihil. Laboriosam et optio architecto impedit quae. Sapiente omnis laudantium tempora voluptas. In eius nisi sed ipsa odit tenetur qui. At et laboriosam dicta. Explicabo libero qui. Et similique dolores consequatur magnam. Sed perspiciatis dolor ut non in. Unde quibusdam maiores dignissimos ipsum dolore voluptatem laudantium. Unde voluptatem praesentium quod eos voluptatem adipisci."], ["created_at", "2015-03-05 16:32:10.949795"], ["updated_at", "2015-03-05 16:32:10.949795"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Occaecati Officiis Alias Facilis Numquam Et Animi Consequatur Quo."], ["blog_text", "Voluptas et voluptatibus doloribus dignissimos consequatur. Ipsum et facilis quas voluptates vitae. Sit veritatis quo excepturi dicta officia. Repudiandae labore dolores. Sed reprehenderit adipisci blanditiis ut. Blanditiis praesentium non minus. Culpa dolorem sunt voluptatem ut officia. Voluptatem atque sit. Pariatur ea error accusantium voluptatem deserunt. Quod nesciunt esse."], ["created_at", "2015-03-05 16:32:10.961795"], ["updated_at", "2015-03-05 16:32:10.961795"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "blogs" ("title", "blog_text", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Nostrum Nulla Sunt Similique Ut."], ["blog_text", "Quisquam voluptatibus aspernatur rem voluptas quis architecto. Sed consequatur quas corporis aliquid. Pariatur rerum et. Itaque ut enim cupiditate vero. Impedit optio quidem. Rem maiores et qui. Suscipit tempore consequatur. Ut non illum maiores a eligendi. Enim aut earum molestias aliquid. Est rerum nesciunt nihil. Dolorem fugit et sint esse est et ullam. Reprehenderit reiciendis ut aspernatur."], ["created_at", "2015-03-05 16:32:10.970796"], ["updated_at", "2015-03-05 16:32:10.970796"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Omnis et sed."], ["created_at", "2015-03-05 16:33:26.321106"], ["updated_at", "2015-03-05 16:33:26.321106"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Corrupti in itaque dignissimos. Est a asperiores et. Qui officia omnis vero facilis."], ["created_at", "2015-03-05 16:33:26.333106"], ["updated_at", "2015-03-05 16:33:26.333106"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Id sit possimus at maxime. Voluptas totam vero quo. Et quas id in fugiat voluptatem."], ["created_at", "2015-03-05 16:33:26.344107"], ["updated_at", "2015-03-05 16:33:26.344107"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Vel ab quo aliquid ut voluptatem. Qui quo eaque voluptatum. Dicta deleniti quaerat et excepturi."], ["created_at", "2015-03-05 16:33:26.355108"], ["updated_at", "2015-03-05 16:33:26.355108"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Officiis asperiores eos aliquam voluptas voluptas."], ["created_at", "2015-03-05 16:33:26.366108"], ["updated_at", "2015-03-05 16:33:26.366108"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Aliquam molestias praesentium consequuntur facere. Provident explicabo officiis cupiditate asperiores aut repudiandae."], ["created_at", "2015-03-05 16:33:26.376109"], ["updated_at", "2015-03-05 16:33:26.376109"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Vel deserunt sit nam sit eius porro a. Molestiae voluptatem doloremque asperiores fugiat odio. Molestias qui quibusdam harum voluptate."], ["created_at", "2015-03-05 16:33:26.387109"], ["updated_at", "2015-03-05 16:33:26.387109"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Reprehenderit molestias nostrum. Ut vero odio doloribus assumenda illo. Quas est autem a velit reiciendis sit at."], ["created_at", "2015-03-05 16:33:26.397110"], ["updated_at", "2015-03-05 16:33:26.397110"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Ut dolores ex et quod illum mollitia sed."], ["created_at", "2015-03-05 16:33:26.406110"], ["updated_at", "2015-03-05 16:33:26.406110"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Et quis nemo unde. Quia ullam quia tenetur."], ["created_at", "2015-03-05 16:33:26.415111"], ["updated_at", "2015-03-05 16:33:26.415111"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Reprehenderit exercitationem optio est. Maxime rerum temporibus et excepturi esse."], ["created_at", "2015-03-05 16:33:26.424111"], ["updated_at", "2015-03-05 16:33:26.424111"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Impedit cumque aliquid minima. Vero sed quas illum sed. Nemo ipsam enim reprehenderit deleniti expedita."], ["created_at", "2015-03-05 16:33:26.433112"], ["updated_at", "2015-03-05 16:33:26.433112"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Amet magnam non veritatis. A iusto dolore laborum. Ut eius velit esse."], ["created_at", "2015-03-05 16:33:26.442113"], ["updated_at", "2015-03-05 16:33:26.442113"]]
+  [1m[36m (110.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Quia nobis officiis omnis."], ["created_at", "2015-03-05 16:33:26.556119"], ["updated_at", "2015-03-05 16:33:26.556119"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Ipsa autem non. Qui ipsa nulla minus unde molestiae."], ["created_at", "2015-03-05 16:33:26.566120"], ["updated_at", "2015-03-05 16:33:26.566120"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Porro harum quia consequatur vel suscipit."], ["created_at", "2015-03-05 16:33:26.576120"], ["updated_at", "2015-03-05 16:33:26.576120"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Sint aut occaecati. Est molestiae laudantium. Id sunt in commodi qui quis asperiores."], ["created_at", "2015-03-05 16:33:26.585121"], ["updated_at", "2015-03-05 16:33:26.585121"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Culpa officiis vitae doloremque minus."], ["created_at", "2015-03-05 16:33:26.594121"], ["updated_at", "2015-03-05 16:33:26.594121"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Minus iure ea molestias. Doloribus laboriosam asperiores pariatur occaecati et sed. Illo voluptas maiores voluptatem facilis cumque."], ["created_at", "2015-03-05 16:33:26.603122"], ["updated_at", "2015-03-05 16:33:26.603122"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Distinctio aspernatur praesentium soluta ipsa."], ["created_at", "2015-03-05 16:33:26.613122"], ["updated_at", "2015-03-05 16:33:26.613122"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Molestiae dicta quam et. Doloremque nemo odio aut qui atque cumque placeat."], ["created_at", "2015-03-05 16:33:26.622123"], ["updated_at", "2015-03-05 16:33:26.622123"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Velit at minus vel. Debitis repellat sit deserunt. Sapiente et dignissimos delectus."], ["created_at", "2015-03-05 16:33:26.632123"], ["updated_at", "2015-03-05 16:33:26.632123"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Quia error nesciunt ipsam. Laboriosam et eaque voluptas nobis pariatur inventore."], ["created_at", "2015-03-05 16:33:26.641124"], ["updated_at", "2015-03-05 16:33:26.641124"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Optio ut voluptas ut blanditiis sit eos. Quis sit doloribus voluptatem. Debitis tempore sapiente quibusdam vel id."], ["created_at", "2015-03-05 16:33:26.649124"], ["updated_at", "2015-03-05 16:33:26.649124"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Aut qui et ducimus sit nulla eum quasi. Nam et rerum et quia aperiam. Delectus ut molestiae."], ["created_at", "2015-03-05 16:33:26.660125"], ["updated_at", "2015-03-05 16:33:26.660125"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Illo esse consequatur molestiae. Enim et sint. Culpa eos non."], ["created_at", "2015-03-05 16:33:26.670126"], ["updated_at", "2015-03-05 16:33:26.670126"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Aut quia possimus quasi earum placeat. Eos voluptate nesciunt."], ["created_at", "2015-03-05 16:33:26.679126"], ["updated_at", "2015-03-05 16:33:26.679126"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Minus debitis quae qui."], ["created_at", "2015-03-05 16:33:26.688127"], ["updated_at", "2015-03-05 16:33:26.688127"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Fugiat sed laborum ratione eius commodi. Excepturi velit voluptas."], ["created_at", "2015-03-05 16:33:26.697127"], ["updated_at", "2015-03-05 16:33:26.697127"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Nulla repellat deleniti voluptatum accusantium officia unde."], ["created_at", "2015-03-05 16:33:26.705128"], ["updated_at", "2015-03-05 16:33:26.705128"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Voluptas enim quibusdam aut ratione quo. Similique officiis et recusandae sunt eos."], ["created_at", "2015-03-05 16:33:26.714128"], ["updated_at", "2015-03-05 16:33:26.714128"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Natus enim reprehenderit voluptatum. Non quisquam asperiores. Consequuntur voluptatem doloremque."], ["created_at", "2015-03-05 16:33:26.725129"], ["updated_at", "2015-03-05 16:33:26.725129"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Id nesciunt debitis et non libero officiis. Qui vero quibusdam enim non cupiditate qui. Magni facilis ratione recusandae."], ["created_at", "2015-03-05 16:33:26.737129"], ["updated_at", "2015-03-05 16:33:26.737129"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Esse est et temporibus quis blanditiis. Earum consequatur quisquam."], ["created_at", "2015-03-05 16:33:26.747130"], ["updated_at", "2015-03-05 16:33:26.747130"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Modi odit et aut placeat eaque. Temporibus aut quisquam saepe illum suscipit sunt deserunt. Odit numquam eum recusandae dolor."], ["created_at", "2015-03-05 16:33:26.759131"], ["updated_at", "2015-03-05 16:33:26.759131"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Dolores in officia non impedit. Sunt id in nemo voluptatum qui soluta dignissimos. Sunt dolores exercitationem ratione libero repudiandae vel voluptatem."], ["created_at", "2015-03-05 16:33:26.768131"], ["updated_at", "2015-03-05 16:33:26.768131"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Non et veritatis qui sunt hic quidem. Nemo rem facilis optio quidem numquam omnis sint. Ipsum cum aut magni."], ["created_at", "2015-03-05 16:33:26.779132"], ["updated_at", "2015-03-05 16:33:26.779132"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Molestiae nostrum sint rerum quibusdam."], ["created_at", "2015-03-05 16:33:26.788132"], ["updated_at", "2015-03-05 16:33:26.788132"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Doloremque eius officia odio voluptas sed et."], ["created_at", "2015-03-05 16:33:26.799133"], ["updated_at", "2015-03-05 16:33:26.799133"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Corrupti optio quas est labore voluptate. Accusantium modi quasi."], ["created_at", "2015-03-05 16:33:26.808133"], ["updated_at", "2015-03-05 16:33:26.808133"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Eum non consequatur numquam."], ["created_at", "2015-03-05 16:33:26.819134"], ["updated_at", "2015-03-05 16:33:26.819134"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Voluptas quidem ea et tempora velit quia."], ["created_at", "2015-03-05 16:33:26.827135"], ["updated_at", "2015-03-05 16:33:26.827135"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Architecto et dolor labore atque expedita soluta odit. Quia aut doloribus fugiat."], ["created_at", "2015-03-05 16:33:26.836135"], ["updated_at", "2015-03-05 16:33:26.836135"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Voluptate excepturi impedit illo. Ex enim et esse rerum velit tenetur dolor. Qui nisi placeat illo ea ut voluptatem odit."], ["created_at", "2015-03-05 16:33:26.845136"], ["updated_at", "2015-03-05 16:33:26.845136"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Quas ea omnis voluptas voluptatem ut. Illum officia quod."], ["created_at", "2015-03-05 16:33:26.854136"], ["updated_at", "2015-03-05 16:33:26.854136"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Corporis aperiam voluptatem animi adipisci ad facere. Quos eos facere impedit corporis dolorem laboriosam. Id voluptatum dolorem autem."], ["created_at", "2015-03-05 16:33:26.861136"], ["updated_at", "2015-03-05 16:33:26.861136"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Laboriosam aut voluptatem. Reprehenderit nostrum qui incidunt."], ["created_at", "2015-03-05 16:33:26.869137"], ["updated_at", "2015-03-05 16:33:26.869137"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Dicta exercitationem ut vel. Est quo cumque incidunt. Consequatur reprehenderit sunt et quod aspernatur est quam."], ["created_at", "2015-03-05 16:33:26.878137"], ["updated_at", "2015-03-05 16:33:26.878137"]]
+  [1m[35m (27.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Aliquid reiciendis iure ipsa sint qui et. Ipsam et beatae ea cum et a."], ["created_at", "2015-03-05 16:33:26.909139"], ["updated_at", "2015-03-05 16:33:26.909139"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Sequi et nisi sunt."], ["created_at", "2015-03-05 16:33:26.920140"], ["updated_at", "2015-03-05 16:33:26.920140"]]
+  [1m[35m (19.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Est minus facilis enim rerum. Veritatis sit nulla id. Vel ut fugit consequatur dolor non qui autem."], ["created_at", "2015-03-05 16:33:26.943141"], ["updated_at", "2015-03-05 16:33:26.943141"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Et qui eum vero. Sit commodi odio et alias aliquid."], ["created_at", "2015-03-05 16:33:26.954142"], ["updated_at", "2015-03-05 16:33:26.954142"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Earum aliquam nulla delectus itaque doloremque."], ["created_at", "2015-03-05 16:33:26.961142"], ["updated_at", "2015-03-05 16:33:26.961142"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Officia recusandae blanditiis non et velit rem cupiditate. Quis earum voluptatem sunt repellendus aliquam."], ["created_at", "2015-03-05 16:33:26.971143"], ["updated_at", "2015-03-05 16:33:26.971143"]]
+  [1m[35m (20.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Dolorum et quo architecto non natus iure provident."], ["created_at", "2015-03-05 16:33:26.995144"], ["updated_at", "2015-03-05 16:33:26.995144"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Corporis et repellat tempore minus est ab. Iste aperiam hic unde incidunt et autem voluptas."], ["created_at", "2015-03-05 16:33:27.006145"], ["updated_at", "2015-03-05 16:33:27.006145"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Earum et adipisci eos enim et. Nulla sunt architecto ut totam qui quis iste."], ["created_at", "2015-03-05 16:33:27.014145"], ["updated_at", "2015-03-05 16:33:27.014145"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Quod voluptates placeat quae et culpa."], ["created_at", "2015-03-05 16:33:27.024146"], ["updated_at", "2015-03-05 16:33:27.024146"]]
+  [1m[35m (15.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Voluptate saepe eveniet."], ["created_at", "2015-03-05 16:33:27.044147"], ["updated_at", "2015-03-05 16:33:27.044147"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Asperiores ut dicta velit magni alias expedita. Earum et tempora error."], ["created_at", "2015-03-05 16:33:27.052147"], ["updated_at", "2015-03-05 16:33:27.052147"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Veniam doloremque reiciendis non libero."], ["created_at", "2015-03-05 16:33:27.061148"], ["updated_at", "2015-03-05 16:33:27.061148"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Quia et delectus voluptas atque et beatae sed. Sint enim laudantium est vitae sit quis."], ["created_at", "2015-03-05 16:33:27.069148"], ["updated_at", "2015-03-05 16:33:27.069148"]]
+  [1m[35m (24.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Ut magnam voluptas sunt natus. Eveniet et nemo sapiente."], ["created_at", "2015-03-05 16:33:27.098150"], ["updated_at", "2015-03-05 16:33:27.098150"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Perferendis similique provident nulla consequatur tenetur."], ["created_at", "2015-03-05 16:33:27.108151"], ["updated_at", "2015-03-05 16:33:27.108151"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Aut fuga ea. Doloribus laboriosam rerum laudantium consequatur. Laboriosam similique omnis quia culpa ullam autem."], ["created_at", "2015-03-05 16:33:27.119151"], ["updated_at", "2015-03-05 16:33:27.119151"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Quos voluptas eligendi."], ["created_at", "2015-03-05 16:33:27.130152"], ["updated_at", "2015-03-05 16:33:27.130152"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Veritatis animi dolores nihil voluptas sit. Accusantium incidunt rerum mollitia ipsa est unde maiores."], ["created_at", "2015-03-05 16:33:27.141152"], ["updated_at", "2015-03-05 16:33:27.141152"]]
+  [1m[36m (13.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Sint eius cumque aspernatur officiis nostrum cupiditate amet. Tempora unde id est quisquam quia. Assumenda eos voluptas."], ["created_at", "2015-03-05 16:33:27.158153"], ["updated_at", "2015-03-05 16:33:27.158153"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Voluptatem quo recusandae sapiente quos hic. Dolorum minus sed autem."], ["created_at", "2015-03-05 16:33:27.169154"], ["updated_at", "2015-03-05 16:33:27.169154"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Aut enim et facilis rerum."], ["created_at", "2015-03-05 16:33:27.180155"], ["updated_at", "2015-03-05 16:33:27.180155"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Qui dolor dolores."], ["created_at", "2015-03-05 16:33:27.191155"], ["updated_at", "2015-03-05 16:33:27.191155"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Provident culpa nesciunt ea."], ["created_at", "2015-03-05 16:33:27.203156"], ["updated_at", "2015-03-05 16:33:27.203156"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Perspiciatis eos pariatur odit dolores possimus."], ["created_at", "2015-03-05 16:33:27.212157"], ["updated_at", "2015-03-05 16:33:27.212157"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Ut eius totam autem nemo occaecati quibusdam."], ["created_at", "2015-03-05 16:33:27.222157"], ["updated_at", "2015-03-05 16:33:27.222157"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Maiores excepturi sint cum eum eius rerum quisquam. Voluptas recusandae soluta esse ducimus quibusdam. Temporibus est consectetur exercitationem pariatur dolores voluptas."], ["created_at", "2015-03-05 16:33:27.230158"], ["updated_at", "2015-03-05 16:33:27.230158"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Ratione voluptatum alias voluptatem. Dolore ipsum animi. Ut quisquam consequatur blanditiis omnis recusandae et itaque."], ["created_at", "2015-03-05 16:33:27.238158"], ["updated_at", "2015-03-05 16:33:27.238158"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Quae repellendus eaque labore deserunt quibusdam expedita."], ["created_at", "2015-03-05 16:33:27.246158"], ["updated_at", "2015-03-05 16:33:27.246158"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Rerum aut est."], ["created_at", "2015-03-05 16:33:27.254159"], ["updated_at", "2015-03-05 16:33:27.254159"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Nisi nihil quis beatae."], ["created_at", "2015-03-05 16:33:27.264160"], ["updated_at", "2015-03-05 16:33:27.264160"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Totam et quibusdam nisi tempore tenetur. Labore dolores et placeat amet quam adipisci. Dolores enim amet."], ["created_at", "2015-03-05 16:33:27.272160"], ["updated_at", "2015-03-05 16:33:27.272160"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Sed debitis quos. Autem necessitatibus et placeat sint praesentium nesciunt quia. In atque ex."], ["created_at", "2015-03-05 16:33:27.280160"], ["updated_at", "2015-03-05 16:33:27.280160"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Quidem ut blanditiis debitis sequi."], ["created_at", "2015-03-05 16:33:27.289161"], ["updated_at", "2015-03-05 16:33:27.289161"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Mollitia tempore ratione sunt unde voluptatem magnam. Excepturi voluptatem voluptas corporis nostrum. Est saepe perferendis et eius accusamus."], ["created_at", "2015-03-05 16:33:27.299162"], ["updated_at", "2015-03-05 16:33:27.299162"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Culpa quidem vitae aut et pariatur temporibus autem. Deleniti velit reprehenderit aut non rem aliquam."], ["created_at", "2015-03-05 16:33:27.307162"], ["updated_at", "2015-03-05 16:33:27.307162"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Eos ut possimus in porro magnam. Consectetur perferendis nihil maxime ut labore in."], ["created_at", "2015-03-05 16:33:27.315162"], ["updated_at", "2015-03-05 16:33:27.315162"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Sed vero mollitia nihil omnis officia voluptatum quos. Est quasi ipsum officiis. Id laboriosam blanditiis quibusdam ipsam."], ["created_at", "2015-03-05 16:33:27.325163"], ["updated_at", "2015-03-05 16:33:27.325163"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Doloremque vero id qui laborum. Vitae et inventore numquam officiis dolor."], ["created_at", "2015-03-05 16:33:27.334164"], ["updated_at", "2015-03-05 16:33:27.334164"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Enim aut sint eum excepturi ut ut quia."], ["created_at", "2015-03-05 16:33:27.342164"], ["updated_at", "2015-03-05 16:33:27.342164"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Saepe voluptas non labore mollitia. Exercitationem optio est aut voluptas. Ut sunt corrupti aut qui provident."], ["created_at", "2015-03-05 16:33:27.351165"], ["updated_at", "2015-03-05 16:33:27.351165"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Aut voluptates earum expedita cupiditate occaecati ea."], ["created_at", "2015-03-05 16:33:27.360165"], ["updated_at", "2015-03-05 16:33:27.360165"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Doloribus voluptatem voluptatem iusto ducimus ipsa ut. Est nisi asperiores ad ab dolores sed illum."], ["created_at", "2015-03-05 16:33:27.368165"], ["updated_at", "2015-03-05 16:33:27.368165"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Nobis fugiat assumenda non est praesentium in. Molestias et itaque exercitationem nulla debitis vel."], ["created_at", "2015-03-05 16:33:27.377166"], ["updated_at", "2015-03-05 16:33:27.377166"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Et ut magni."], ["created_at", "2015-03-05 16:33:27.385166"], ["updated_at", "2015-03-05 16:33:27.385166"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Aut et accusantium illum. Non fugiat sapiente consequatur."], ["created_at", "2015-03-05 16:33:27.395167"], ["updated_at", "2015-03-05 16:33:27.395167"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Reprehenderit officiis qui ex molestias atque dolorem. Eligendi doloremque voluptatibus."], ["created_at", "2015-03-05 16:33:27.405168"], ["updated_at", "2015-03-05 16:33:27.405168"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Corporis earum qui ut laudantium nesciunt dolor. Architecto mollitia recusandae at omnis quia voluptates sit. Dolorum eius cumque ullam debitis."], ["created_at", "2015-03-05 16:33:27.414168"], ["updated_at", "2015-03-05 16:33:27.414168"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Est voluptas quia. Modi illum tempora."], ["created_at", "2015-03-05 16:33:27.424169"], ["updated_at", "2015-03-05 16:33:27.424169"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Et qui quia libero. Illum eos unde explicabo beatae ipsam reiciendis labore."], ["created_at", "2015-03-05 16:33:27.432169"], ["updated_at", "2015-03-05 16:33:27.432169"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)  [["comment_text", "Ullam laboriosam molestiae voluptas omnis ut. Molestias ducimus odit architecto reprehenderit velit omnis sint. Ut esse soluta nihil."], ["created_at", "2015-03-05 16:33:27.440170"], ["updated_at", "2015-03-05 16:33:27.440170"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments" ("comment_text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["comment_text", "Rerum magni voluptate consequatur aut nobis facere. Aut voluptatum rerum maiores. Qui sunt rerum quis."], ["created_at", "2015-03-05 16:33:27.449170"], ["updated_at", "2015-03-05 16:33:27.449170"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 5], ["updated_at", "2015-03-05 16:35:58.667819"], ["id", 1]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 5], ["updated_at", "2015-03-05 16:35:58.690821"], ["id", 2]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.700821"], ["id", 3]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 3], ["updated_at", "2015-03-05 16:35:58.710822"], ["id", 4]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.719822"], ["id", 5]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 5], ["updated_at", "2015-03-05 16:35:58.728823"], ["id", 6]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 10], ["updated_at", "2015-03-05 16:35:58.738823"], ["id", 7]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 1], ["updated_at", "2015-03-05 16:35:58.747824"], ["id", 8]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 4], ["updated_at", "2015-03-05 16:35:58.756824"], ["id", 9]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 9], ["updated_at", "2015-03-05 16:35:58.763825"], ["id", 10]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.772825"], ["id", 11]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.780826"], ["id", 12]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.789826"], ["id", 13]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 1], ["updated_at", "2015-03-05 16:35:58.797827"], ["id", 14]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 8], ["updated_at", "2015-03-05 16:35:58.805827"], ["id", 15]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 8], ["updated_at", "2015-03-05 16:35:58.813828"], ["id", 16]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 9], ["updated_at", "2015-03-05 16:35:58.822828"], ["id", 17]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 7], ["updated_at", "2015-03-05 16:35:58.830829"], ["id", 18]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 3], ["updated_at", "2015-03-05 16:35:58.838829"], ["id", 19]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 9], ["updated_at", "2015-03-05 16:35:58.846830"], ["id", 20]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 4], ["updated_at", "2015-03-05 16:35:58.854830"], ["id", 21]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 7], ["updated_at", "2015-03-05 16:35:58.862830"], ["id", 22]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.871831"], ["id", 23]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 3], ["updated_at", "2015-03-05 16:35:58.879831"], ["id", 24]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 10], ["updated_at", "2015-03-05 16:35:58.889832"], ["id", 25]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.898833"], ["id", 26]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 10], ["updated_at", "2015-03-05 16:35:58.906833"], ["id", 27]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 3], ["updated_at", "2015-03-05 16:35:58.914833"], ["id", 28]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 8], ["updated_at", "2015-03-05 16:35:58.923834"], ["id", 29]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 4], ["updated_at", "2015-03-05 16:35:58.931834"], ["id", 30]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 10], ["updated_at", "2015-03-05 16:35:58.939835"], ["id", 31]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 9], ["updated_at", "2015-03-05 16:35:58.947835"], ["id", 32]]
+  [1m[35m (23.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 5], ["updated_at", "2015-03-05 16:35:58.974837"], ["id", 33]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 6], ["updated_at", "2015-03-05 16:35:58.983837"], ["id", 34]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 1], ["updated_at", "2015-03-05 16:35:58.991838"], ["id", 35]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 4], ["updated_at", "2015-03-05 16:35:58.999838"], ["id", 36]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 7], ["updated_at", "2015-03-05 16:35:59.008839"], ["id", 37]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 6], ["updated_at", "2015-03-05 16:35:59.017839"], ["id", 38]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?  [["user_id", 2], ["updated_at", "2015-03-05 16:35:59.025840"], ["id", 39]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "blogs" SET "user_id" = ?, "updated_at" = ? WHERE "blogs"."id" = ?[0m  [["user_id", 5], ["updated_at", "2015-03-05 16:35:59.033840"], ["id", 40]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35mComment Load (1.0ms)[0m  SELECT "comments".* FROM "comments"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 3], ["blog_id", 4], ["updated_at", "2015-03-05 16:37:50.814234"], ["id", 1]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 3], ["blog_id", 14], ["updated_at", "2015-03-05 16:37:50.824234"], ["id", 2]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 4], ["blog_id", 11], ["updated_at", "2015-03-05 16:37:50.834235"], ["id", 3]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 7], ["updated_at", "2015-03-05 16:37:50.842235"], ["id", 4]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 1], ["blog_id", 37], ["updated_at", "2015-03-05 16:37:50.852236"], ["id", 5]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 7], ["blog_id", 30], ["updated_at", "2015-03-05 16:37:50.860236"], ["id", 6]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 5], ["blog_id", 2], ["updated_at", "2015-03-05 16:37:50.870237"], ["id", 7]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 14], ["updated_at", "2015-03-05 16:37:50.878237"], ["id", 8]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 10], ["blog_id", 30], ["updated_at", "2015-03-05 16:37:50.886238"], ["id", 9]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 21], ["updated_at", "2015-03-05 16:37:50.895238"], ["id", 10]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 5], ["blog_id", 18], ["updated_at", "2015-03-05 16:37:50.906239"], ["id", 11]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["blog_id", 24], ["updated_at", "2015-03-05 16:37:50.914239"], ["id", 12]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 7], ["blog_id", 9], ["updated_at", "2015-03-05 16:37:50.924240"], ["id", 13]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 30], ["updated_at", "2015-03-05 16:37:50.932240"], ["id", 14]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 7], ["blog_id", 26], ["updated_at", "2015-03-05 16:37:50.940241"], ["id", 15]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 20], ["updated_at", "2015-03-05 16:37:50.948241"], ["id", 16]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 8], ["blog_id", 40], ["updated_at", "2015-03-05 16:37:50.956242"], ["id", 17]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 4], ["blog_id", 4], ["updated_at", "2015-03-05 16:37:50.965242"], ["id", 18]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 1], ["blog_id", 5], ["updated_at", "2015-03-05 16:37:50.973243"], ["id", 19]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 27], ["updated_at", "2015-03-05 16:37:50.982243"], ["id", 20]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 6], ["blog_id", 17], ["updated_at", "2015-03-05 16:37:50.991244"], ["id", 21]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 20], ["updated_at", "2015-03-05 16:37:50.999244"], ["id", 22]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 7], ["blog_id", 11], ["updated_at", "2015-03-05 16:37:51.006245"], ["id", 23]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 2], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.014245"], ["id", 24]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 6], ["blog_id", 11], ["updated_at", "2015-03-05 16:37:51.022246"], ["id", 25]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 39], ["updated_at", "2015-03-05 16:37:51.030246"], ["id", 26]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 12], ["updated_at", "2015-03-05 16:37:51.042247"], ["id", 27]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["blog_id", 33], ["updated_at", "2015-03-05 16:37:51.050247"], ["id", 28]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 5], ["blog_id", 7], ["updated_at", "2015-03-05 16:37:51.059248"], ["id", 29]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 20], ["updated_at", "2015-03-05 16:37:51.067248"], ["id", 30]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 10], ["blog_id", 4], ["updated_at", "2015-03-05 16:37:51.075249"], ["id", 31]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 15], ["updated_at", "2015-03-05 16:37:51.082249"], ["id", 32]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 5], ["updated_at", "2015-03-05 16:37:51.092250"], ["id", 33]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 18], ["updated_at", "2015-03-05 16:37:51.102250"], ["id", 34]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 29], ["updated_at", "2015-03-05 16:37:51.110251"], ["id", 35]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 6], ["blog_id", 30], ["updated_at", "2015-03-05 16:37:51.118251"], ["id", 36]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 10], ["updated_at", "2015-03-05 16:37:51.125252"], ["id", 37]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 7], ["blog_id", 17], ["updated_at", "2015-03-05 16:37:51.133252"], ["id", 38]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 9], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.143253"], ["id", 39]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 32], ["updated_at", "2015-03-05 16:37:51.152253"], ["id", 40]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 6], ["blog_id", 9], ["updated_at", "2015-03-05 16:37:51.160254"], ["id", 41]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 7], ["blog_id", 33], ["updated_at", "2015-03-05 16:37:51.168254"], ["id", 42]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 6], ["blog_id", 11], ["updated_at", "2015-03-05 16:37:51.176254"], ["id", 43]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 6], ["blog_id", 39], ["updated_at", "2015-03-05 16:37:51.184255"], ["id", 44]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 12], ["updated_at", "2015-03-05 16:37:51.193255"], ["id", 45]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 6], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.201256"], ["id", 46]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 3], ["blog_id", 23], ["updated_at", "2015-03-05 16:37:51.210256"], ["id", 47]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 4], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.220257"], ["id", 48]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 10], ["blog_id", 10], ["updated_at", "2015-03-05 16:37:51.229257"], ["id", 49]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 6], ["updated_at", "2015-03-05 16:37:51.238258"], ["id", 50]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 10], ["blog_id", 13], ["updated_at", "2015-03-05 16:37:51.249259"], ["id", 51]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 4], ["blog_id", 2], ["updated_at", "2015-03-05 16:37:51.257259"], ["id", 52]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 40], ["updated_at", "2015-03-05 16:37:51.265260"], ["id", 53]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 7], ["blog_id", 5], ["updated_at", "2015-03-05 16:37:51.274260"], ["id", 54]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 10], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.282261"], ["id", 55]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["blog_id", 38], ["updated_at", "2015-03-05 16:37:51.292261"], ["id", 56]]
+  [1m[35m (15.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 1], ["blog_id", 26], ["updated_at", "2015-03-05 16:37:51.311262"], ["id", 57]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 3], ["blog_id", 39], ["updated_at", "2015-03-05 16:37:51.320263"], ["id", 58]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 5], ["blog_id", 28], ["updated_at", "2015-03-05 16:37:51.329263"], ["id", 59]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 2], ["updated_at", "2015-03-05 16:37:51.336264"], ["id", 60]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 4], ["blog_id", 11], ["updated_at", "2015-03-05 16:37:51.344264"], ["id", 61]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["blog_id", 4], ["updated_at", "2015-03-05 16:37:51.352265"], ["id", 62]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 6], ["blog_id", 23], ["updated_at", "2015-03-05 16:37:51.362265"], ["id", 63]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 15], ["updated_at", "2015-03-05 16:37:51.371266"], ["id", 64]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 2], ["blog_id", 18], ["updated_at", "2015-03-05 16:37:51.378266"], ["id", 65]]
+  [1m[36m (22.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["blog_id", 10], ["updated_at", "2015-03-05 16:37:51.404267"], ["id", 66]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 6], ["blog_id", 1], ["updated_at", "2015-03-05 16:37:51.414268"], ["id", 67]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 2], ["blog_id", 36], ["updated_at", "2015-03-05 16:37:51.421268"], ["id", 68]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 9], ["blog_id", 32], ["updated_at", "2015-03-05 16:37:51.432269"], ["id", 69]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 32], ["updated_at", "2015-03-05 16:37:51.440270"], ["id", 70]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 9], ["blog_id", 11], ["updated_at", "2015-03-05 16:37:51.451270"], ["id", 71]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 27], ["updated_at", "2015-03-05 16:37:51.459271"], ["id", 72]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 7], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.467271"], ["id", 73]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 7], ["blog_id", 5], ["updated_at", "2015-03-05 16:37:51.476272"], ["id", 74]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 3], ["blog_id", 33], ["updated_at", "2015-03-05 16:37:51.484272"], ["id", 75]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 3], ["blog_id", 9], ["updated_at", "2015-03-05 16:37:51.493273"], ["id", 76]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 3], ["blog_id", 16], ["updated_at", "2015-03-05 16:37:51.501273"], ["id", 77]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 9], ["blog_id", 30], ["updated_at", "2015-03-05 16:37:51.511274"], ["id", 78]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 7], ["blog_id", 26], ["updated_at", "2015-03-05 16:37:51.522274"], ["id", 79]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 15], ["updated_at", "2015-03-05 16:37:51.529275"], ["id", 80]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 5], ["blog_id", 15], ["updated_at", "2015-03-05 16:37:51.538275"], ["id", 81]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 35], ["updated_at", "2015-03-05 16:37:51.546276"], ["id", 82]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 8], ["blog_id", 2], ["updated_at", "2015-03-05 16:37:51.556276"], ["id", 83]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 35], ["updated_at", "2015-03-05 16:37:51.563277"], ["id", 84]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 10], ["blog_id", 34], ["updated_at", "2015-03-05 16:37:51.571277"], ["id", 85]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 4], ["blog_id", 23], ["updated_at", "2015-03-05 16:37:51.581278"], ["id", 86]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 1], ["blog_id", 1], ["updated_at", "2015-03-05 16:37:51.589278"], ["id", 87]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 7], ["updated_at", "2015-03-05 16:37:51.597279"], ["id", 88]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 3], ["blog_id", 19], ["updated_at", "2015-03-05 16:37:51.604279"], ["id", 89]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 8], ["blog_id", 30], ["updated_at", "2015-03-05 16:37:51.614279"], ["id", 90]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 4], ["blog_id", 38], ["updated_at", "2015-03-05 16:37:51.622280"], ["id", 91]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 5], ["blog_id", 27], ["updated_at", "2015-03-05 16:37:51.631280"], ["id", 92]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 8], ["blog_id", 16], ["updated_at", "2015-03-05 16:37:51.639281"], ["id", 93]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 3], ["blog_id", 39], ["updated_at", "2015-03-05 16:37:51.647281"], ["id", 94]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 8], ["blog_id", 1], ["updated_at", "2015-03-05 16:37:51.656282"], ["id", 95]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 1], ["blog_id", 9], ["updated_at", "2015-03-05 16:37:51.664282"], ["id", 96]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 9], ["blog_id", 17], ["updated_at", "2015-03-05 16:37:51.674283"], ["id", 97]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["blog_id", 35], ["updated_at", "2015-03-05 16:37:51.682283"], ["id", 98]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?  [["user_id", 9], ["blog_id", 31], ["updated_at", "2015-03-05 16:37:51.691284"], ["id", 99]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "comments" SET "user_id" = ?, "blog_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 2], ["blog_id", 13], ["updated_at", "2015-03-05 16:37:51.698284"], ["id", 100]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mComment Load (2.0ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:39:25 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (2.0ms)[0m  SELECT "blogs".* FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 278ms (Views: 231.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:39:26 -0600
+
+
+Started GET "/blogs/1" for ::1 at 2015-03-05 10:39:34 -0600
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBlog Load (1.0ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 139ms (Views: 113.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:39:46 -0600
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (1.0ms)[0m  SELECT "comments".* FROM "comments"
+  Rendered comments/index.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 209ms (Views: 202.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:39:46 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:39:47 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:39:47 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:39:47 -0600
+
+
+Started GET "/comments/1" for ::1 at 2015-03-05 10:39:50 -0600
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.0ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 123ms (Views: 118.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:39:52 -0600
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (1.0ms)[0m  SELECT "comments".* FROM "comments"
+  Rendered comments/index.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 161ms (Views: 159.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/comments/1" for ::1 at 2015-03-05 10:40:00 -0600
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered comments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 135ms (Views: 130.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:40:05 -0600
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (2.0ms)[0m  SELECT "comments".* FROM "comments"
+  Rendered comments/index.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 136ms (Views: 132.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users" for ::1 at 2015-03-05 10:40:09 -0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 128ms (Views: 119.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:09 -0600
+
+
+Started GET "/users/5" for ::1 at 2015-03-05 10:40:12 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 125ms (Views: 122.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for ::1 at 2015-03-05 10:40:13 -0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 125ms (Views: 123.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:40:18 -0600
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (1.0ms)[0m  SELECT "blogs".* FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 144ms (Views: 142.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:40:18 -0600
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:40:25 -0600
+Processing by CommentsController#index as HTML
+  [1m[36mComment Load (0.0ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 150ms (Views: 149.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:40:25 -0600
+
+
+Started GET "/comments/1" for ::1 at 2015-03-05 10:42:19 -0600
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mComment Load (0.0ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 100ms (Views: 98.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:42:21 -0600
+Processing by CommentsController#index as HTML
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 142ms (Views: 141.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:42:24 -0600
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (1.0ms)[0m  SELECT "blogs".* FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 120ms (Views: 119.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:42:24 -0600
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:47:59 -0600
+Processing by BlogsController#index as HTML
+Completed 500 Internal Server Error in 9ms
+
+NoMethodError (undefined method `paginate' for #<Class:0x9274e18>):
+  app/controllers/blogs_controller.rb:8:in `index'
+
+
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (78.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_markup.html (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/style.css within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_inner_console_markup.html within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_prompt_box_markup.html within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/console.js within layouts/javascript (45.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/main.js within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/error_page.js within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/index.html (110.0ms)
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:48:27 -0600
+Processing by BlogsController#index as HTML
+Completed 500 Internal Server Error in 7ms
+
+NoMethodError (undefined method `paginate' for #<Class:0x9ca8ab0>):
+  app/controllers/blogs_controller.rb:8:in `index'
+
+
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_markup.html (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/style.css within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_inner_console_markup.html within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_prompt_box_markup.html within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/console.js within layouts/javascript (51.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/main.js within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/error_page.js within layouts/javascript (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/index.html (110.0ms)
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:48:29 -0600
+Processing by BlogsController#index as HTML
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `paginate' for #<Class:0x9ca8ab0>):
+  app/controllers/blogs_controller.rb:8:in `index'
+
+
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_markup.html (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/style.css within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_inner_console_markup.html within layouts/inlined_string (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/_prompt_box_markup.html within layouts/inlined_string (0.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/console.js within layouts/javascript (45.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/main.js within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/error_page.js within layouts/javascript (1.0ms)
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.1/lib/web_console/templates/index.html (98.0ms)
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:49:36 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (1.0ms)[0m  SELECT  "blogs".* FROM "blogs" LIMIT 10 OFFSET 0
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Rendered blogs/index.html.erb within layouts/application (437.0ms)
+Completed 200 OK in 691ms (Views: 646.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:49:37 -0600
+
+
+Started GET "/blogs?page=2" for ::1 at 2015-03-05 10:49:42 -0600
+Processing by BlogsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[35mBlog Load (0.0ms)[0m  SELECT  "blogs".* FROM "blogs" LIMIT 10 OFFSET 10
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Rendered blogs/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 101ms (Views: 100.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/blogs?page=3" for ::1 at 2015-03-05 10:49:43 -0600
+Processing by BlogsController#index as HTML
+  Parameters: {"page"=>"3"}
+  [1m[35mBlog Load (0.0ms)[0m  SELECT  "blogs".* FROM "blogs" LIMIT 10 OFFSET 20
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Rendered blogs/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 98ms (Views: 97.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/blogs?page=4" for ::1 at 2015-03-05 10:49:45 -0600
+Processing by BlogsController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[35mBlog Load (1.0ms)[0m  SELECT  "blogs".* FROM "blogs" LIMIT 10 OFFSET 30
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Rendered blogs/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 110ms (Views: 108.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/blogs/31" for ::1 at 2015-03-05 10:49:59 -0600
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mBlog Load (1.0ms)[0m  SELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1  [["id", 31]]
+  Rendered blogs/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 134ms (Views: 112.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/blogs" for ::1 at 2015-03-05 10:50:02 -0600
+Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT  "blogs".* FROM "blogs" LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 102ms (Views: 101.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/blogs?page=2" for ::1 at 2015-03-05 10:50:03 -0600
+Processing by BlogsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT  "blogs".* FROM "blogs" LIMIT 10 OFFSET 10[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 117ms (Views: 117.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:50:35 -0600
+Processing by CommentsController#index as HTML
+  [1m[36mComment Load (2.0ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 146ms (Views: 138.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:50:35 -0600
+
+
+Started GET "/comments" for ::1 at 2015-03-05 10:52:20 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (0.0ms)[0m  SELECT  "comments".* FROM "comments" LIMIT 10 OFFSET 0
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (525.0ms)
+Completed 200 OK in 787ms (Views: 749.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/comments" for 127.0.0.1 at 2015-03-05 10:52:22 -0600
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (0.0ms)[0m  SELECT  "comments".* FROM "comments" LIMIT 10 OFFSET 0
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 105ms (Views: 103.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-05 10:52:22 -0600
+
+
+Started GET "/comments?page=2" for ::1 at 2015-03-05 10:52:24 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[35mComment Load (1.0ms)[0m  SELECT  "comments".* FROM "comments" LIMIT 10 OFFSET 10
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 103ms (Views: 101.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/comments?page=9" for ::1 at 2015-03-05 10:52:43 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"page"=>"9"}
+  [1m[35mComment Load (0.0ms)[0m  SELECT  "comments".* FROM "comments" LIMIT 10 OFFSET 80
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 115ms (Views: 114.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/comments?page=10" for ::1 at 2015-03-05 10:52:46 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"page"=>"10"}
+  [1m[35mComment Load (0.0ms)[0m  SELECT  "comments".* FROM "comments" LIMIT 10 OFFSET 90
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 106ms (Views: 104.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-12 08:26:37 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (6.0ms)
+Completed 200 OK in 73ms (Views: 52.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2015-03-12 08:26:46 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 513ms (Views: 485.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/blogs-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/application-af5c0b3a2eb205ceb0b11aaedc3ad77c.css?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/users-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/scaffolds-ee4213536204fb5ab9e100b9e9fd849d.css?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/blogs-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for 127.0.0.1 at 2015-03-12 08:26:46 -0500
+
+
+Started GET "/assets/users-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-12 08:26:47 -0500
+
+
+Started GET "/users/1" for ::1 at 2015-03-12 08:26:48 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (8.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 241ms (Views: 95.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-03-12 08:26:48 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-12 08:26:48 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-12 08:26:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateFriendlyIdSlugs (20150312133040)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "friendly_id_slugs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "slug" varchar NOT NULL, "sluggable_id" integer NOT NULL, "sluggable_type" varchar(50), "scope" varchar, "created_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_friendly_id_slugs_on_sluggable_id" ON "friendly_id_slugs" ("sluggable_id")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type" ON "friendly_id_slugs" ("slug", "sluggable_type")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  CREATE UNIQUE INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope" ON "friendly_id_slugs" ("slug", "sluggable_type", "scope")
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  CREATE  INDEX "index_friendly_id_slugs_on_sluggable_type" ON "friendly_id_slugs" ("sluggable_type")
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150312133040"]]
+  [1m[35m (83.0ms)[0m  commit transaction
+Migrating to AddSlugToUser (20150312133131)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (16.0ms)[0m  ALTER TABLE "users" ADD "slug" varchar
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_slug" ON "users" ("slug")[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150312133131"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_type' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_slug' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_slug' AND type='index'
+[0m
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1000[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 1) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "abe-weissnat"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "abe-weissnat"], ["updated_at", "2015-03-12 13:37:47.468345"], ["id", 1]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 2) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "dr-claudine-schumm"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "dr-claudine-schumm"], ["updated_at", "2015-03-12 13:37:47.480346"], ["id", 2]]
+  [1m[36m (12.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 3) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "travis-mcglynn"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "travis-mcglynn"], ["updated_at", "2015-03-12 13:37:47.500347"], ["id", 3]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 4) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "ova-donnelly"]]
+  [1m[35mSQL (0.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "ova-donnelly"], ["updated_at", "2015-03-12 13:37:47.511348"], ["id", 4]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 5) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "mr-deron-quigley"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "mr-deron-quigley"], ["updated_at", "2015-03-12 13:37:47.522348"], ["id", 5]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 6) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "karelle-toy"]]
+  [1m[35mSQL (0.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "karelle-toy"], ["updated_at", "2015-03-12 13:37:47.532349"], ["id", 6]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 7) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "reynold-purdy"]]
+  [1m[35mSQL (0.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "reynold-purdy"], ["updated_at", "2015-03-12 13:37:47.541349"], ["id", 7]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 8) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "gerry-collier"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "gerry-collier"], ["updated_at", "2015-03-12 13:37:47.551350"], ["id", 8]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 9) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "mrs-mike-hansen"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "mrs-mike-hansen"], ["updated_at", "2015-03-12 13:37:47.561351"], ["id", 9]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."id" != 10) AND "users"."slug" = ? LIMIT 1[0m  [["slug", "laurence-roob"]]
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "slug" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["slug", "laurence-roob"], ["updated_at", "2015-03-12 13:37:47.570351"], ["id", 10]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users"
+
+
+Started GET "/" for ::1 at 2015-03-12 08:38:26 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered c:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (5.0ms)
+Completed 200 OK in 42ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2015-03-12 08:38:37 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 232ms (Views: 208.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-12 08:38:38 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-12 08:38:38 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-12 08:38:38 -0500
+
+
+Started GET "/users/abe-weissnat" for ::1 at 2015-03-12 08:38:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"abe-weissnat"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["slug", "abe-weissnat"]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 110ms (Views: 91.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/karelle-toy" for ::1 at 2015-03-12 08:38:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"karelle-toy"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["slug", "karelle-toy"]]
+  Rendered users/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 101ms (Views: 98.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/gerry-collier" for ::1 at 2015-03-12 08:38:47 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"gerry-collier"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["slug", "gerry-collier"]]
+  Rendered users/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 130ms (Views: 128.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/mrs-mike-hansen" for ::1 at 2015-03-12 08:38:50 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"mrs-mike-hansen"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["slug", "mrs-mike-hansen"]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 122ms (Views: 120.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/mrs-mike-hansen" for ::1 at 2015-03-12 08:40:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"mrs-mike-hansen"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["slug", "mrs-mike-hansen"]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 106ms (Views: 103.0ms | ActiveRecord: 1.0ms)
